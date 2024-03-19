@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>QR Based Guided System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">QR Admin</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/admindashboard">Home</a></li>
+          <li><a href="/myproducts">My Products</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+      </nav>
+  
+      <div class="row">
+      <div class="container col-sm-4"></div>
+      <div class="container col-sm-4">
+        <h2>Add Product </h2>
+        <br/>
+        <form action="/addproductform" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>Upload Product Image</label>
+            <input type="file" name="chooseFile" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Enter Product Cost</label>
+            <input type="number" name="productcost" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Enter Product Name</label>
+            <input type="text" name="productname" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Enter Product Location</label>
+            <input type="text" name="productlocation" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Add Product</button>
+          </div>
+          <span style="color:red">{{err}}</span>
+          <span style="color:green">{{res}}</span>
+        </form>
+      </div>
+    </div>
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page </title>
+    <link rel="stylesheet" href="{{url_for('static',filename='Style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="{{url_for('static',filename='SupermarketLogo.jpg')}}" alt="Logo">
+        </div>
+        <div class="navbar-right">
+            <a href="/">Home</a>
+             <a href="/signup">Signup</a>
+            <a href="/login">Login</a> 
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="left-div">
+            <!-- Content for the left div -->
+            <h1>Search for Product that you want</h1>
+        </div>
+        
+        <div class="search-bar container mt-5">
+            
+            <form action="/queryproduct" method="post">
+            <select class="form-control select2" class="form-control" name="prodid" style="width:500px">
+                {%for i in data%}
+                <option value={{i[0]}}>{{i[1]}}</option>                
+                {%endfor%}
+                <!-- Add more options as needed -->
+            </select>
+            <button type="submit">Search</button>
+            </form>
+        </div>
+        
+        <div class="right-div">
+            <!-- Content for the right div -->
+            <div class="container-fluid">
+                <center>
+                    <div id="qr-reader" style="width:300px"></div>
+                    <div id="qr-reader-results"></div>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <table>
+        
+        {%for i in data1%}
+        <tr>
+            <th>Image</th>
+            <th>Cost</th>
+            <th>Location</th>
+            <th>Product Name</th>
+            <th>Product Id</th>
+        </tr>
+        <tr>
+            <td><img src={{i[0]}} height="200" width="200"/></td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+
+        </tr>
+        {%endfor%}
+    </table>
+    </div>
+
+    <div class="frontphoto">
+        <img class="photo" src="https://t4.ftcdn.net/jpg/03/22/52/97/360_F_322529755_PtwWWld1VDk66wXltHdVC6eZiMI4Hu8W.jpg" alt="Frontpage image">
+    </div>
+    <div class="cardcollection">
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI9pETZyjOhnapj9XVmCednNwJJJKqSydwpoITUs_w_NVoKgiUyDlePAH4ms_JpMzBKCY&usqp=CAU" alt="Image 1">
+        </div>
+        <div class="card">
+            <img src="{{url_for('static',filename='image2.jpg')}}" alt="Image 2">
+        </div>
+        <div class="card">
+            <img src="{{url_for('static',filename='image3.jpg')}}" alt="Image 3">
+        </div>
+    </div>
+
+    <div class="thirddiv">
+            <div class="image-column">
+                <img src="{{url_for('static',filename='thridimg1.jpg')}}" alt="Image 1">
+                <img src="{{url_for('static',filename='image2.jpg')}}" alt="Image 2">
+                <img src="{{url_for('static',filename='image3.jpg')}}" alt="Image 3">
+            </div>
+    </div>
+    <div class="container">
+        <div class="row">
+          <div class="column">
+            <img src="{{url_for('static',filename='Contact.jpg')}}" style="width:100%">
+          </div>
+          <div class="column">
+            <form action="/contactUs" method="post">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+              <label for="country">Location</label>
+              <select id="country" name="Area">
+                <option value="Guntur">Guntur</option>
+                <option value="Vijayawada">Vijayawada</option>
+                <option value="Narasaraopet">Narasaraopet</option>
+              </select>
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Select2 JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.full.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('.select2').select2({
+        tags: true,
+        tokenSeparators: [',', ' '],
+        placeholder: "Type and Select or press Enter to create new tag"
+      });
+    });
+  </script>
+  <script>
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
+        var resultContainer = document.getElementById('qr-reader-results');
+        var lastResult, countResults = 0;
+        function onScanSuccess(decodedText, decodedResult) {
+            if (decodedText !== lastResult) {
+                ++countResults;
+                lastResult = decodedText;
+                // Handle on success condition with the decoded message.
+                
+                console.log(`Scan result ${decodedText}`, decodedResult);
+                document.getElementById('qr-reader-results').innerHTML=decodedText;
+                location.href="/queryproduct?prodid="+decodedText;
+
+            }
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "qr-reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+    });
+</script>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+/* Resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling the navigation bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333; /* Adjust as needed */
+    padding: 10px 20px;
+}
+
+.navbar-left {
+    flex: 1; /* Take up all available space */
+}
+
+.navbar-left img {
+    height: 40px; /* Adjust the height of the logo */
+}
+
+.navbar-right {
+    display: flex;
+}
+
+.navbar-right a {
+    color: #fff; /* Text color for navigation links */
+    text-decoration: none;
+    margin-left: 20px; /* Adjust the spacing between links */
+}
+
+.navbar-right a:hover {
+    color: #ffd700; /* Adjust the hover color as needed */
+}
+.frontphoto{
+    width: 100%;
+    height: 500px; 
+}
+.photo {
+    width: 100%;
+    height: 100%; 
+    border-radius:20px ;/* Maintain aspect ratio */
+}
+.cardcollection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.card {
+    width: 30%;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 100;
+    display: block;
+    border-radius: 10px 10px 0 0;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.left-div,
+.right-div {
+    width: calc(50% - 10px); /* Adjust this value as needed to add space between divs */
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+    width: 30%; /* Adjust this value as needed */
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+    width: 30%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.thriddiv {
+    padding: 20px;
+}
+
+.image-column {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Adjust the gap between images */
+}
+
+.image-column img {
+    width: calc(30% - 5px); /* 50% of container width minus half of gap */
+    border: 1px solid #ccc; /* Add border to images */
+    border-radius: 5px; /* Add border radius to images */
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style inputs */
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Style the container/contact section */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  /* Create two columns that float next to eachother */
+  .column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+
+ /*Products Page Details Css*/
+
+ * {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main {
+    margin: 2%;
+}
+
+.card {
+    width: 20%;
+    display: inline-block;
+    box-shadow: 2px 2px 20px black;
+    border-radius: 5px; 
+    margin: 2%;
+}
+
+.image img {
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.title {
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+.des {
+    padding: 3px;
+    text-align: center;
+    padding-top: 10px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+button {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding:10px;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+
+/* this are the location CSS */
+.image-wrapper {
+    text-align: center; /* Center the image */
+  }
+  
+  .table-wrapper {
+    margin-top: 20px; /* Adjust as needed */
+    border: 1px solid black;
+    overflow-x: auto; /* Add horizontal scrollbar if needed */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  
+
+
+   
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>QR Based Guided System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .thumbnail {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+        transition: 0.3s;
+        min-width: 40%;
+        border-radius: 5px;
+    }
+
+    .thumbnail-description {
+        min-height: 40px;
+    }
+
+    .thumbnail:hover {
+        cursor: pointer;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">QR Admin</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/admindashboard">Home</a></li>
+          <li class="active"><a href="/myproducts">My Products</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+      </nav>
+  
+      <div class="row">
+        <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-8">
+          <div class="row space-16">&nbsp;</div>
+          <div class="row">
+            {%for i in data %}
+            <div class="col-sm-4">
+              <div class="thumbnail">
+                <div class="caption text-center">
+                  <div class="position-relative">
+                    <img src={{i[0]}} style="width:72px;height:72px;" />
+                  </div>
+                  <h4 id="thumbnail-label">{{i[3]}}</h4>
+                </div>
+                <div class="caption card-footer text-center">
+                  <ul class="list-inline">
+                    <li><i class="people lighter"></i>Location:&nbsp;{{i[2]}}</li>
+                    <li></li>
+                    <li>Cost:&nbsp;{{i[1]}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+          </div>
+          <div class="col-md-2">&nbsp;</div>
+        </div>
+      </div>
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </body>
+  </html>
